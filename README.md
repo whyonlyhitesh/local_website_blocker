@@ -4,14 +4,28 @@ To ensure children's online safety in the digital age, it's crucial to block cer
 ## Why Local website blocking ?
 Local website blocking is increasingly vital due to risks like data breaches, child profiling, and harmful app influences. Children's online activities can be exploited for targeted advertising, affecting their self-perception and consumer habits. Certain apps can also negatively shape their thinking. By locally blocking specific websites and apps, we can ensure a safer digital environment for children, protecting them from harm and promoting positive growth.
 ## Prerequisites
+### Running with python script (For Linux & Windows)
 Before you begin, ensure you have met the following requirements:
 * You have installed Python 3.x
 * No need of prior knowledge of Python.
 * Admin Permissions
+* Stable internet connection.
+* Install python libraries by
+    pip install requests
+    pip install pandas
+### Running with Windows release
+Before you begin, ensure you have met the following requirements:
+* Admin Permissions
+* Stable internet connection.
 ## Usage
+### Running with python script (For Linux & Windows)
 To use the script, follow these steps:
 * Run the script using the command with root/admin privilege:
     python local_website_blocker.py
+### Running with v0.2 release (Windows)
+To use the local_website_blocking-v0.2 release and follow these steps:
+* Run the release with root/admin privilege.
+NOTE: Rest all steps are same for both python script and v0.2 release (Windows)
 * Enter the operating system you are using
 * Do you want to block harmful websites from the database URLhaus Database (https://urlhaus.abuse.ch/browse/). Depending on your use case type 1, 2 or 3.
 * While entering websites that you have identified. Enter the domain of sites which you want to block (one after another with space in between).
@@ -20,6 +34,7 @@ www.social_media.com www.addictive_site.com abc.com
 NOTE: If website starts with http or https, then ignore both the prefixes and directly write the name of website.
 Example: Website = https://abc.com, so you will only write abc.com 
 * After running the script, disconnect you internet connection and then connect again.
+
 ## URLhaus Database 
 * URLhaus Database (https://urlhaus.abuse.ch/browse/) is a valuable resource for online security and protection. It is a comprehensive collection of known malicious URLs that have been reported and identified by a community of cybersecurity experts.
 
