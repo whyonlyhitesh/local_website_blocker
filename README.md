@@ -25,7 +25,7 @@ To use the script, follow these steps:
 ### Running with v0.2 release (Windows)
 To use the local_website_blocking-v0.2 release and follow these steps:
 * Run the release with root/admin privilege.
-NOTE: Rest all steps are same for both python script and v0.2 release (Windows)
+##### NOTE: Rest all steps are same for both python script and v0.2 release (Windows)
 * Enter the operating system you are using
 * Do you want to block harmful websites from the database URLhaus Database (https://urlhaus.abuse.ch/browse/). Depending on your use case type 1, 2 or 3.
 * While entering websites that you have identified. Enter the domain of sites which you want to block (one after another with space in between).
