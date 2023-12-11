@@ -3,28 +3,36 @@ import tkinter
 
 customtkinter.set_ctk_parent_class(tkinter.Tk)
 
-customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
-customtkinter.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
+customtkinter.set_appearance_mode("Light")  # Modes: "System" (standard), "Dark", "Light"
+customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
 app = customtkinter.CTk()
 app.geometry("900x780")
 app.title("Local Website Blocker")
 
-def submit():
-    user_system2 = user_system.get()
-    choice_button1 = choice_button.get()
-    check_var1 = check_var.get()
-    url_variable1 = url_variable.get()
-    quit()
-    return url_variable1, check_var1, choice_button1, user_system2
-
 def quit():
     app.quit()
+
+def submit1():
+    Operating_System = user_system.get()
+    user_choice = choice_button.get()
+    auto_program = check_var.get()
+
+    if choice_button.get() == 2:
+        user_html = 0
+        quit()
+    else:
+        # Input the URL
+        url_variable = customtkinter.CTkInputDialog(text="Enter the list of websites that you need to block in the box below." + "\n" + "(Websites should be seperated with spaces)", title="Local Website Blocker")
+        user_html = url_variable.get_input()
+        quit()
+    
+    return user_html, auto_program, user_choice, Operating_System
 
 frame_1 = customtkinter.CTkFrame(master=app)
 frame_1.pack(pady=20, padx=60, fill="both", expand=True)
 
-title = customtkinter.CTkLabel(master=frame_1, justify=customtkinter.LEFT, text="Local Website Blocker")
+title = customtkinter.CTkLabel(master=frame_1, justify=customtkinter.LEFT, text="Local Website Blocker", font= ("Roboto Medium", 52), text_color="Black")
 title.pack(pady=10, padx=10)
 
 parameter_option = customtkinter.CTkLabel(master=frame_1, justify=customtkinter.LEFT, text="Select the Operating System")
@@ -49,20 +57,12 @@ radiobutton_2.pack(pady=10, padx=10)
 radiobutton_3 = customtkinter.CTkRadioButton(master=frame_1, variable=choice_button, value=3, text="Both URLs and Database")
 radiobutton_3.pack(pady=10, padx=10)
 
-# Input the URL
-url_input = customtkinter.CTkLabel(master=frame_1, justify=customtkinter.CENTER, text="Enter the list of websites that you need to block in the box below." + "\n" + "(Websites should be seperated with spaces)" "\n" "(It will only work with 1st and 2rd option):")
-url_input.pack(pady=10, padx=10)
-
-url_variable = tkinter.StringVar()
-textbox = customtkinter.CTkEntry(master=frame_1, width=200, height=20, textvariable=url_variable)
-textbox.pack(pady=10, padx=10)
-
 # Autostart checkbox
 check_var = customtkinter.StringVar(value="on")
 checkbox = customtkinter.CTkCheckBox(master=frame_1, variable=check_var, text= "Would you like the list of dangerous websites to update automatically when you start your Windows computer or laptop?")
 checkbox.pack(pady=10, padx=10)
 
-button_1 = customtkinter.CTkButton(master=frame_1, command=submit)
+button_1 = customtkinter.CTkButton(master=frame_1, command=submit1, text="Submit")
 button_1.pack(pady=10, padx=10)
 
 app.mainloop()
