@@ -4,68 +4,45 @@ import requests
 import zipfile
 import io
 import os
+import getpass
+import shutil
+import front_end_gui
+
+
+user_html, auto_program, user_choice, Operating_System = front_end_gui.submit1()
 
 # Website
 zip_file_url = "https://urlhaus.abuse.ch/downloads/csv/" 
 
-# preference = whether to block specific website or from database. (out of 1,2,3)
-def preference() :
-    while True:
-        default_address = input('''
-What would you prefer: 
-1) To only restrict access to the specific websites that you've identified (Type 1) OR
-2) Only block harmful websites from known database (Type 2)
-3) Or do both                             
-''')
-        if default_address.isdigit() :
-                default_address = int(default_address)
-                if default_address == 1 :
-                        break
-                elif default_address == 2 :
-                        break
-                elif default_address == 3 :
-                        break
-                else :
-                    print("Enter appropriate number.")
-        else :
-            print("Please enter a number.")
-    return default_address
-
-# user_system = Operating system of the user
-def user_system():
-    while True:
-        Operating_System = input("You are using which Operating System: Windows or Linux: ")
-        Operating_System = Operating_System.lower()
-          
-        if Operating_System == "linux":
-            break
-        elif Operating_System == "windows" :
-            break
-        else:
-            print("Please enter appropriate OS.")
-
-    return Operating_System
+# Getting information about the user
+USER_NAME = getpass.getuser()
 
 # It takes the input of sites that user wants to block
 def user_site_input():
-    HtmlFile = input("Enter the list of websites that you need to block. Websites should be seperated with spaces: ")
+    HtmlFile = user_html 
     n = HtmlFile.count(" ") + 1 
     HtmlFile = HtmlFile[0:].split(" ")
     return HtmlFile, n
 
 # Downlading Zip
 def download_zip() :
+    # Downloading zip 
     r = requests.get(zip_file_url)
     z = zipfile.ZipFile(io.BytesIO(r.content))
+    # Extracting zip
     z.extractall()
 
-# Retrieving Data
+# Retriving Data
 def retrieving_data():
+    # Reading the csv file
     dataframe = pd.read_csv("csv.txt", skiprows=range(0, 8), usecols = ["url"])
+    # Writing the csv to block_url.txt
     with open('block_url.txt', 'w') as f:
-        df_string = dataframe.to_string(header=False, index=False)
+        df_string = dataframe.to_csv(header=False, index=False)
         f.write(df_string)
+    # Removing csv
     os.remove("csv.txt")
+    # Removing http:// & https://
     with open("block_url.txt", "rt") as fin:
         with open("block_url0.txt", "wt") as fout:
             for line in fin:
@@ -92,10 +69,25 @@ def hosts_edited_not(user_or_database, host_file):
                 return i
     return -1
 
+def add_to_startup(file_path=""):
+    if file_path == "":
+        file_path = os.path.dirname(os.path.realpath(__file__))
+    bat_path = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup' % USER_NAME
+    with open(bat_path + '\\' + "open.bat", "w+") as bat_file:
+        bat_file.write(r'start "" "%s"' % file_path)
+
+def program_autostart_windows():
+        if int(auto_program) == 1:
+            os.mkdir("C:\Windows\Program Files\local_website_blocking")
+            shutil.copy("windows_autostart_application.py", "C:\Windows\Program Files\local_website_blocking\windows_autostart_application.py")
+            add_to_startup("C:\Windows\Program Files\local_website_blocking\windows_autostart_application.py")
+
+
 download_zip()
 retrieving_data()
-Operating_System = user_system()
-user_preference = preference()
+
+user_preference = user_choice
+Operating_System = Operating_System.lower()
 
 if Operating_System == "linux" :
 
@@ -229,10 +221,11 @@ if Operating_System == "linux" :
             with open('hosts', 'a', errors='ignore') as f:
                 f.write("\n" + "#### Websites Blocked by Database Ends" + "\n")
                 
-    os.remove('block_url.txt')
+
 
 else:
     if user_preference == 1:
+        program_autostart_windows()
         start = hosts_edited_not("#### Websites Blocked by USER Starts", 'C:\Windows\System32\drivers\etc\hosts')
         if start == -1:
             # Starting USER sites marker
@@ -259,6 +252,7 @@ else:
                     f.write(line)          
 
     elif user_preference == 2 :
+        program_autostart_windows()
         start = hosts_edited_not("#### Websites Blocked by Database Starts", 'C:\Windows\System32\drivers\etc\hosts')
         end = hosts_edited_not("#### Websites Blocked by Database Ends", 'C:\Windows\System32\drivers\etc\hosts')
         if start == -1:
@@ -324,6 +318,7 @@ else:
                     f.write(line)
         
     # Doing Part 2
+        program_autostart_windows()
         start = hosts_edited_not("#### Websites Blocked by Database Starts", 'C:\Windows\System32\drivers\etc\hosts')
         end = hosts_edited_not("#### Websites Blocked by Database Ends", 'C:\Windows\System32\drivers\etc\hosts')
         if start == -1:
@@ -361,5 +356,4 @@ else:
             # Ending database sites marker
             with open('C:\Windows\System32\drivers\etc\hosts', 'a', errors='ignore') as f:
                 f.write("\n" + "#### Websites Blocked by Database Ends" + "\n")
-                
-    os.remove('block_url.txt')
+os.remove('block_url.txt')
