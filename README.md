@@ -13,15 +13,11 @@ Before you begin, ensure you have met the following requirements:
 * Stable internet connection.
 * Install python libraries by
 
-    pip install requests
-
-    pip install pandas
-
-    pip install customtkinter
-
-    pip install tkinter
-
-    pip  install shutils
+        pip install requests
+        pip install pandas
+        pip install customtkinter
+        pip install tkinter
+        pip  install shutils
 
 ### Running with Graphical binary release
 Before you begin, ensure you have met the following requirements:
@@ -34,7 +30,8 @@ Before you begin, ensure you have met the following requirements:
 To use the script, follow these steps:
 
 * Run the script using the comm& with root/admin privilege:
-    python local_website_blocker.py
+
+        python local_website_blocker.py
 * Enter the operating system you are using
 * Do you want to block harmful websites from the database URLhaus Database (https://urlhaus.abuse.ch/browse/). Depending on your use case type 1, 2 or 3.
 * While entering websites that you have identified. Enter the domain of sites which you want to block (one after another with space in between).
@@ -64,9 +61,8 @@ Example: Website = https://abc.com, so you will only write abc.com
 #### For Linux
 * If you wish to have the list of dangerous websites updated automatically each time you power on your computer or laptop, then run the following comm&s in the terminal:
 
-    sudo cp -i linux_autostart_application.py /bin
-
-    sudo crontab -e
+        sudo cp -i linux_autostart_application.py /bin
+        sudo crontab -e
 
 Paste the following text in the after all the #s (hashtags)
 
