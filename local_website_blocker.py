@@ -92,21 +92,21 @@ Operating_System = Operating_System.lower()
 if Operating_System == "linux" :
 
     if user_preference == 1:
-        start = hosts_edited_not("#### Websites Blocked by USER Starts", 'hosts')
+        start = hosts_edited_not("#### Websites Blocked by USER Starts", '/etc/hosts')
         if start == -1:
             # Starting USER sites marker
-            with open('hosts', 'a', errors='ignore') as f:
+            with open('/etc/hosts', 'a', errors='ignore') as f:
                 f.write("\n" + "#### Websites Blocked by USER Starts")
             HtmlFile, n = user_site_input()
             for i in range(0,n):
-                with open('hosts', 'a', errors='ignore') as f:
+                with open('/etc/hosts', 'a', errors='ignore') as f:
                     f.write("\n" + "127.0.0.1 " + f"{HtmlFile[i]}")
             # Ending USER sites marker
-            with open('hosts', 'a', errors='ignore') as f:
+            with open('/etc/hosts', 'a', errors='ignore') as f:
                 f.write("\n" + "#### Websites Blocked by USER Ends" + "\n")
 
         else :
-            with open('hosts', 'r+') as f: #r+ does the work of rw
+            with open('/etc/hosts', 'r+') as f: #r+ does the work of rw
                 lines = f.readlines()
                 for i, line in enumerate(lines):
                     if line.startswith('#### Websites Blocked by USER Starts'):
@@ -118,22 +118,22 @@ if Operating_System == "linux" :
                     f.write(line)          
 
     elif user_preference == 2 :
-        start = hosts_edited_not("#### Websites Blocked by Database Starts", 'hosts')
-        end = hosts_edited_not("#### Websites Blocked by Database Ends", 'hosts')
+        start = hosts_edited_not("#### Websites Blocked by Database Starts", '/etc/hosts')
+        end = hosts_edited_not("#### Websites Blocked by Database Ends", '/etc/hosts')
         if start == -1:
             HtmlFile, n = reading_database()
             # Starting database sites marker
-            with open('hosts', 'a', errors='ignore') as f:
+            with open('/etc/hosts', 'a', errors='ignore') as f:
                 f.write("\n" + "#### Websites Blocked by Database Starts")
             for i in range(0,n):
-                with open('hosts', 'a', errors='ignore') as f:
+                with open('/etc/hosts', 'a', errors='ignore') as f:
                     f.write("\n" + "127.0.0.1 " + f"{HtmlFile[i]}")
             # Ending database sites marker
-            with open('hosts', 'a', errors='ignore') as f:
+            with open('/etc/hosts', 'a', errors='ignore') as f:
                 f.write("\n" + "#### Websites Blocked by Database Ends" + "\n")
         else :
             HtmlFile, n = reading_database()
-            with open(r'hosts', 'r+') as fp:
+            with open(r'/etc/hosts', 'r+') as fp:
                 # read an store all lines into list
                 lines = fp.readlines()
                 # move file pointer to the beginning of a file
@@ -147,31 +147,31 @@ if Operating_System == "linux" :
                     if number not in range(start , end + 1):
                         fp.write(line)
             # Starting database sites marker
-            with open('hosts', 'a', errors='ignore') as f:
+            with open('/etc/hosts', 'a', errors='ignore') as f:
                 f.write("\n" + "#### Websites Blocked by Database Starts")
             for i in range(0,n):
-                with open('hosts', 'a', errors='ignore') as f:
+                with open('/etc/hosts', 'a', errors='ignore') as f:
                     f.write("\n" + "127.0.0.1 " + f"{HtmlFile[i]}")
             # Ending database sites marker
-            with open('hosts', 'a', errors='ignore') as f:
+            with open('/etc/hosts', 'a', errors='ignore') as f:
                 f.write("\n" + "#### Websites Blocked by Database Ends" + "\n")
 
     else :
     # Doing part 1
-        start = hosts_edited_not("#### Websites Blocked by USER Starts", 'hosts')
+        start = hosts_edited_not("#### Websites Blocked by USER Starts", '/etc/hosts')
         if start == -1:
             # Starting USER sites marker
-            with open('hosts', 'a', errors='ignore') as f:
+            with open('/etc/hosts', 'a', errors='ignore') as f:
                 f.write("\n" + "#### Websites Blocked by USER Starts")
             HtmlFile, n = user_site_input()
             for i in range(0,n):
-                with open('hosts', 'a', errors='ignore') as f:
+                with open('/etc/hosts', 'a', errors='ignore') as f:
                     f.write("\n" + "127.0.0.1 " + f"{HtmlFile[i]}")
             # Ending USER sites marker
-            with open('hosts', 'a', errors='ignore') as f:
+            with open('/etc/hosts', 'a', errors='ignore') as f:
                 f.write("\n" + "#### Websites Blocked by USER Ends" + "\n")
         else :
-            with open('hosts', 'r+') as f: #r+ does the work of rw
+            with open('/etc/hosts', 'r+') as f: #r+ does the work of rw
                 lines = f.readlines()
                 for i, line in enumerate(lines):
                     if line.startswith('#### Websites Blocked by USER Starts'):
@@ -183,22 +183,22 @@ if Operating_System == "linux" :
                     f.write(line)
         
     # Doing Part 2
-        start = hosts_edited_not("#### Websites Blocked by Database Starts", 'hosts')
-        end = hosts_edited_not("#### Websites Blocked by Database Ends", 'hosts')
+        start = hosts_edited_not("#### Websites Blocked by Database Starts", '/etc/hosts')
+        end = hosts_edited_not("#### Websites Blocked by Database Ends", '/etc/hosts')
         if start == -1:
             HtmlFile, n = reading_database()
             # Starting database sites marker
-            with open('hosts', 'a', errors='ignore') as f:
+            with open('/etc/hosts', 'a', errors='ignore') as f:
                 f.write("\n" + "#### Websites Blocked by Database Starts")
             for i in range(0,n):
-                with open('hosts', 'a', errors='ignore') as f:
+                with open('/etc/hosts', 'a', errors='ignore') as f:
                     f.write("\n" + "127.0.0.1 " + f"{HtmlFile[i]}")
             # Ending database sites marker
-            with open('hosts', 'a', errors='ignore') as f:
+            with open('/etc/hosts', 'a', errors='ignore') as f:
                 f.write("\n" + "#### Websites Blocked by Database Ends" + "\n")
         else :
             HtmlFile, n = reading_database()
-            with open(r'hosts', 'r+') as fp:
+            with open(r'/etc/hosts', 'r+') as fp:
                 # read an store all lines into list
                 lines = fp.readlines()
                 # move file pointer to the beginning of a file
@@ -212,13 +212,13 @@ if Operating_System == "linux" :
                     if number not in range(start, end+1):
                         fp.write(line)
             # Starting database sites marker
-            with open('hosts', 'a', errors='ignore') as f:
+            with open('/etc/hosts', 'a', errors='ignore') as f:
                 f.write("\n" + "#### Websites Blocked by Database Starts")
             for i in range(0,n):
-                with open('hosts', 'a', errors='ignore') as f:
+                with open('/etc/hosts', 'a', errors='ignore') as f:
                     f.write("\n" + "127.0.0.1 " + f"{HtmlFile[i]}")
             # Ending database sites marker
-            with open('hosts', 'a', errors='ignore') as f:
+            with open('/etc/hosts', 'a', errors='ignore') as f:
                 f.write("\n" + "#### Websites Blocked by Database Ends" + "\n")
                 
 
