@@ -6,22 +6,33 @@ Local website blocking is increasingly vital due to risks like data breaches, ch
 ## Prerequisites
 ### Running with python script (For Linux & Windows)
 Before you begin, ensure you have met the following requirements:
+
 * You have installed Python 3.x
 * No need of prior knowledge of Python.
 * Admin Permissions
 * Stable internet connection.
 * Install python libraries by
+
     pip install requests
-    pip install p&as
+
+    pip install pandas
+
     pip install customtkinter
+
     pip install tkinter
+
+    pip  install shutils
+
 ### Running with Graphical binary release
 Before you begin, ensure you have met the following requirements:
+
 * Admin Permissions
 * Stable internet connection.
+
 ## Usage
 ### Running with python script (For Linux & Windows)
 To use the script, follow these steps:
+
 * Run the script using the comm& with root/admin privilege:
     python local_website_blocker.py
 * Enter the operating system you are using
@@ -32,8 +43,10 @@ www.social_media.com www.addictive_site.com abc.com
 NOTE: If website starts with http or https, then ignore both the prefixes & directly write the name of website.
 Example: Website = https://abc.com, so you will only write abc.com
 * After running the script, disconnect you internet connection & then connect again.
+
 ### Running with Graphical binary release (For both Windows & Linux)
 To use the local_website_blocking-v0.2 release Graphical binary follow these steps:
+
 * Run the release with root/admin privilege.
 * Select the operating system you are using.
 * Select the option you want.
@@ -43,29 +56,35 @@ www.social_media.com www.addictive_site.com abc.com
 NOTE: If website starts with http or https, then ignore both the prefixes & directly write the name of website.
 Example: Website = https://abc.com, so you will only write abc.com
 * After running the script, disconnect you internet connection & then connect again.
+
 #### To update the blocklist of harmful websites automatically:
-##### For Windows
+#### For Windows
 * If you wish to have the list of dangerous websites updated automatically each time you power on your computer or laptop, then select the checkbox in the Graphical binary release.
 
-##### For Linux
+#### For Linux
 * If you wish to have the list of dangerous websites updated automatically each time you power on your computer or laptop, then run the following comm&s in the terminal:
+
     sudo cp -i linux_autostart_application.py /bin
+
     sudo crontab -e
+
 Paste the following text in the after all the #s (hashtags)
 
-    @reboot python /bin/linux_autostart_application.py &
+        @reboot python /bin/linux_autostart_application.py &
 
 ## URLhaus Database
 * URLhaus Database (https://urlhaus.abuse.ch/browse/) is a valuable resource for online security & protection. It is a comprehensive collection of known malicious URLs that have been reported & identified by a community of cybersecurity experts.
 
 ## License
 This project uses the following license: MIT License (https://opensource.org/license/mit/)
+
 ## Articles of data breaches
 ### From Apps
 * Child Tracker App uKnowkids Data Leak Exposed Weak Database (https://www.trendmicro.com/vinfo/us/security/news/mobile-safety/child-tracker-app-uknowkids-data-leak-exposed-weak-database)
 * Parental control app with 5 million downloads vulnerable to attacks (https://www.bleepingcomputer.com/news/security/parental-control-app-with-5-million-downloads-vulnerable-to-attacks/)
 * This top parental control app has a serious security flaw (https://www.techradar.com/news/this-top-parental-control-app-found-to-have-a-serious-security-flaw)
 * These parental control apps could expose your kids’ private data — what you need to know (https://www.laptopmag.com/news/child-monitoring-apps-are-tracking-parents-too-here-are-the-bad-apples)
+
 ### From Web Browser Extensions
 * 1.3 million users encountered browser extension threats in the first half of 2022 (https://www.kaspersky.com/about/press-releases/2022_13-million-users-encountered-browser-extension-threats-in-the-first-half-of-2022)
 * Websites can steal browser data via extensions APIs (https://www.zdnet.com/article/websites-can-steal-browser-data-via-extensions-apis/)
