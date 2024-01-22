@@ -3,6 +3,10 @@
 To ensure children's online safety in the digital age, it's crucial to block certain websites. The internet, while beneficial, poses risks like addiction & exposure to adult content. These can disrupt children's development & expose them to inappropriate material. By blocking specific sites, we create a safer, age-appropriate online environment, protecting them from harmful content & addiction. This isn't censorship, but a way to promote healthy growth. Blocking harmful websites also protects devices & personal information from malware.
 ## Why Local website blocking ?
 Local website blocking is increasingly vital due to risks like data breaches, child profiling, & harmful app influences. Children's online activities can be exploited for targeted advertising, affecting their self-perception & consumer habits. Certain apps can also negatively shape their thinking. By locally blocking specific websites & apps, we can ensure a safer digital environment for children, protecting them from harm & promoting positive growth.
+
+![alt text](local_website_blocker_light.png)
+
+
 ## Prerequisites
 ### Running with python script (For Linux & Windows)
 Before you begin, ensure you have met the following requirements:
@@ -42,7 +46,7 @@ Example: Website = https://abc.com, so you will only write abc.com
 * After running the script, disconnect you internet connection & then connect again.
 
 ### Running with Graphical binary release (For both Windows & Linux)
-To use the local_website_blocking-v0.2 release Graphical binary follow these steps:
+To use the local_website_blocking-v0.6 release Graphical binary follow these steps:
 
 * Run the release with root/admin privilege.
 * Select the operating system you are using.
@@ -53,20 +57,6 @@ www.social_media.com www.addictive_site.com abc.com
 NOTE: If website starts with http or https, then ignore both the prefixes & directly write the name of website.
 Example: Website = https://abc.com, so you will only write abc.com
 * After running the script, disconnect you internet connection & then connect again.
-
-#### To update the blocklist of harmful websites automatically:
-#### For Windows
-* If you wish to have the list of dangerous websites updated automatically each time you power on your computer or laptop, then select the checkbox in the Graphical binary release.
-
-#### For Linux
-* If you wish to have the list of dangerous websites updated automatically each time you power on your computer or laptop, then run the following comm&s in the terminal:
-
-        sudo cp -i linux_autostart_application.py /bin
-        sudo crontab -e
-
-Paste the following text in the after all the #s (hashtags)
-
-        @reboot python /bin/linux_autostart_application.py &
 
 ## URLhaus Database
 * URLhaus Database (https://urlhaus.abuse.ch/browse/) is a valuable resource for online security & protection. It is a comprehensive collection of known malicious URLs that have been reported & identified by a community of cybersecurity experts.
